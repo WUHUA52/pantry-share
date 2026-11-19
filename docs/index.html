@@ -35,6 +35,10 @@
       amounts.
     </footer>
   </main>
+  <dialog id="product-dialog" aria-labelledby="product-heading">
+    <div class="mast"><h2 id="product-heading"></h2><button aria-label="Close product details" onclick="document.getElementById('product-dialog').close()" autofocus>×</button></div>
+    <div id="product-body"></div>
+  </dialog>
   <dialog id="modal">
     <form id="form">
       <div class="mast">
@@ -50,6 +54,8 @@
   </dialog>
   <script src="money.js"></script>
   <script src="retail.js"></script>
+  <script src="product-labels.js"></script>
+  <script src="recommendations.js"></script>
   <script src="storage.js"></script>
   <script src="app.js"></script>
 </html>

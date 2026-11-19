@@ -25,7 +25,11 @@ const stores = [
   "MARTIN'S",
   "ACME Markets",
 ];
-const products = Object.fromEntries(retailProducts.map((p) => [p.id, p]));
+const products = Object.fromEntries(retailProducts.map((p) => [p.id, { ...p, ...productLabels[p.id] }]));
+const listingKey = (p) => p.url.replace("://www.", "://");
+const catalogProducts = [...new Map(Object.values(products).map((p) => [listingKey(p), p])).values()];
+const selectedDiets = new Set();
+let detailRow = null;
 const icons = {
   Milk: "🥛",
   Eggs: "🥚",
@@ -228,6 +232,7 @@ function render() {
         : page === "Budgets"
           ? budgets()
           : receipts();
+  if (page === "Compare products") refreshCount();
 }
 function list() {
   const items = state.items.filter((i) => i.scope === scope);
@@ -251,7 +256,7 @@ function list() {
     items
       .map((i) => {
         const p = productFor(i);
-        return `<div class="row"><input aria-label="Select ${esc(p.name)}" type="checkbox" ${checked.has(i.id) ? "checked" : ""} onchange="pick(${i.id},this.checked)">${photo(p)}<div class="detail"><b>${esc(p.name)}</b><small>${stores[i.store]} · ${p.size} ${esc(p.unit)} · ${i.people.map(esc).join(", ")}</small></div><b>${cash(est(i))}</b><button onclick="compare(${i.id})">Compare</button><button onclick="edit(${i.id})">Edit</button></div>`;
+        return `<div class="row"><input aria-label="Select ${esc(p.name)}" type="checkbox" ${checked.has(i.id) ? "checked" : ""} onchange="pick(${i.id},this.checked)">${products[i.product] ? `<button class="item-photo" aria-label="Compare ${esc(p.name)}" onclick="showProduct('${p.id}',${i.id})">${photo(p)}</button>` : photo(p)}<div class="detail">${products[i.product] ? `<button class="item-name" onclick="showProduct('${p.id}',${i.id})">${esc(p.name)}</button>` : `<b>${esc(p.name)}</b>`}<small>${stores[i.store]} · ${p.size} ${esc(p.unit)} · ${i.people.map(esc).join(", ")}</small></div><b>${cash(est(i))}</b><button onclick="compare(${i.id})">Compare</button><button onclick="edit(${i.id})">Edit</button></div>`;
       })
       .join("") || "<p>Your list is empty. Add a grocery to start planning.</p>"
   }<div class="bar">
@@ -266,12 +271,17 @@ function pick(id, on) {
   render();
 }
 function compare(id) {
+  const current = state.items.find((i) => i.id === id);
+  if (products[current.product]) return showProduct(current.product, id);
   swap = id;
   let i = state.items.find((i) => i.id === id);
   state.store = i.store;
   filter = productFor(i).cat;
   page = "Compare products";
   render();
+}
+function dietInputs() {
+  return dietChoices.map((label) => `<label><input type="checkbox" value="${label}" ${selectedDiets.has(label) ? "checked" : ""} onchange="setDiet(this)">${label}</label>`).join("");
 }
 function catalog() {
   return `<section class="panel">
@@ -280,38 +290,101 @@ function catalog() {
 <button onclick="locationForm()">${esc(state.location)} · Change location</button>
 </div>
 <div class="shop-tools"><label>Supermarket<select aria-label="Supermarket" onchange="state.store=+this.value;save()">${options(stores, state.store)}</select></label>
-<label>Find an item<input id="query" aria-label="Search groceries" placeholder="Search groceries" value="${esc(filter)}" oninput="filter=this.value;document.getElementById('cards').innerHTML=cards()"></label>
+<label>Find an item<input id="query" aria-label="Search groceries" placeholder="Search groceries" value="${esc(filter)}" oninput="filter=this.value;refreshCards()"></label>
 </div>
-<p>
-<small>${retailProducts.filter((p) => p.store === state.store).length} demo products · Lowest unit price first · Estimated prices.</small>
-</p>
+<fieldset class="diet-filter"><legend>Dietary preferences</legend>
+<div>${dietInputs()}</div>
+<small>Choose any combination. Matches must meet every selected preference.</small></fieldset>
+<p><small id="result-count" role="status"></small></p>
 <div id="cards" class="catalog">${cards()}</div>
 </section>`;
 }
+function setDiet(input) {
+  if (input.checked) selectedDiets.add(input.value);
+  else selectedDiets.delete(input.value);
+  if ($("cards")) {
+    for (const box of document.querySelectorAll("#view .diet-filter input")) box.checked = selectedDiets.has(box.value);
+    refreshCards();
+  }
+  if ($("product-dialog").open) {
+    const p = products[$("product-dialog").dataset.product];
+    $("local-options").innerHTML = optionSections(p, false);
+    $("other-options").innerHTML = optionSections(p, true);
+  }
+}
+function clearSearch() {
+  selectedDiets.clear();
+  filter = "";
+  render();
+}
+function visibleProducts() {
+  return catalogProducts.filter((p) => p.store === state.store && matchesDiet(p, selectedDiets) &&
+    (p.name + " " + p.cat).toLowerCase().includes(filter.trim().toLowerCase()))
+    .sort((a, b) => unitPrice(a) - unitPrice(b));
+}
+function refreshCount() {
+  $("result-count").textContent = `${visibleProducts().length} items · Lowest unit price first · Estimated prices`;
+}
+function refreshCards() {
+  $("cards").innerHTML = cards();
+  refreshCount();
+}
+function badges(p) {
+  return (p.diet || []).map((label) => `<span class="diet-badge">${esc(label)}</span>`).join("");
+}
 function cards() {
-  return (
-    retailProducts
-      .map((p) => ({ p, k: p.id }))
-      .filter(
-        ({ p }) =>
-          p.store === state.store &&
-          (p.name + " " + p.cat).toLowerCase().includes(filter.toLowerCase()),
-      )
-      .sort((a, b) => a.p.price / a.p.size - b.p.price / b.p.size)
-      .map(
-        ({
-          p,
-          k,
-        }) => `<article>${photo(p)}<div class="aisle">${esc(p.cat)}</div><b>${esc(p.name)}</b>
-<p>${p.size} ${esc(p.unit)} · ${cash(amount(p, state.store) / p.size)}/${esc(p.unit)}</p>
-<strong>${cash(amount(p, state.store))}</strong>
-<br>
-<button onclick="add('${k}')">${swap ? "Use this option" : "Add to list"}</button> <a rel="noreferrer" target="_blank" href="${esc(p.url)}">View product</a>
-</article>`,
-      )
-      .join("") ||
-    "<p>No matching items in this store’s demo selection.</p><button onclick=\"navTo('Compare products')\">Show all products</button>"
-  );
+  return visibleProducts().map((p) => `<article>
+<button class="product-link" onclick="showProduct('${p.id}',swap)">${photo(p)}<span class="aisle">${esc(p.cat)}</span><b>${esc(p.name)}</b></button>
+<div class="badges">${badges(p)}</div>
+<p>${p.size} ${esc(p.unit)} · ${cash(unitPrice(p))}/${esc(p.unit)}</p><strong>${cash(p.price)}</strong>
+<button onclick="add('${p.id}')">${swap ? "Use this option" : "Add to list"}</button>
+<button class="compare-link" onclick="showProduct('${p.id}',swap)">Compare options</button>
+</article>`).join("") ||
+    '<div class="empty-shelf"><p>No matches at this store. Try another store or clear your filters.</p><button onclick="clearSearch()">Clear filters and search</button></div>';
+}
+function savingsNote(item, p) {
+  const notes = [];
+  if (p.price < item.price) notes.push(`Save ${cash(item.price - p.price)} per package`);
+  if (unitPrice(p) < unitPrice(item)) {
+    const percent = (1 - unitPrice(p) / unitPrice(item)) * 100;
+    notes.push(`${percent < 1 ? "Under 1" : Math.round(percent)}% less per ${esc(p.unit)}`);
+  }
+  return notes.join(" · ");
+}
+function optionRows(items, item, featured) {
+  return items.slice(0, 3).map((p) => `<div class="option-row">${photo(p)}
+<div><b>${esc(p.name)}</b><small>${esc(stores[p.store])} · ${p.size} ${esc(p.unit)} · ${cash(unitPrice(p))}/${esc(p.unit)}</small>
+<span class="option-note">${featured ? esc(p.feature) : savingsNote(item, p)}</span>
+<a target="_blank" rel="noreferrer" href="${esc(p.url)}">Retailer listing</a></div>
+<div class="option-action"><b>${cash(p.price)}</b><button onclick="chooseDetail('${p.id}')">${detailRow === null ? "Add to list" : "Swap item"}</button></div></div>`).join("");
+}
+function optionSections(item, otherStores) {
+  const { cheaper, featured } = compareOptions(item, catalogProducts, selectedDiets, otherStores);
+  return `<section><h3>Budget picks</h3>${optionRows(cheaper, item, false) || "<p>No lower-priced match in this selection.</p>"}</section>
+<section><h3>Brand &amp; specialty picks</h3>${optionRows(featured, item, true) || "<p>No specialty alternative listed in this selection.</p>"}</section>`;
+}
+function showProduct(id, row = null) {
+  const p = products[id];
+  detailRow = row;
+  $("product-dialog").dataset.product = id;
+  $("product-heading").textContent = p.name;
+  $("product-body").innerHTML = `<div class="product-hero">${photo(p)}<div><span class="aisle">${esc(stores[p.store])} · ${esc(p.cat)}</span>
+<strong>${cash(p.price)}</strong><small>${p.size} ${esc(p.unit)} · ${cash(unitPrice(p))}/${esc(p.unit)}</small>
+<a href="${esc(p.url)}" target="_blank" rel="noreferrer">View at ${esc(stores[p.store])}</a></div></div>
+<section><h3>Dietary details</h3><div class="badges">${badges(p) || "No dietary details recorded for this item."}</div>
+<small>Based on listed ingredients and product details. For allergies, check the package for cross-contact warnings.</small>
+${p.source || p.dietSource ? `<a class="label-source" href="${esc(p.source || p.dietSource)}" target="_blank" rel="noreferrer">Product information</a>` : ""}</section>
+${row === null ? `<button class="primary" onclick="chooseDetail('${p.id}')">Add this item to list</button>` : ""}
+<h2 class="option-heading">Alternatives at ${esc(stores[p.store])}</h2>
+<fieldset class="diet-filter"><legend>Filter alternatives</legend><div>${dietInputs()}</div></fieldset>
+<div id="local-options">${optionSections(p, false)}</div>
+<details><summary>Compare other stores</summary><div id="other-options">${optionSections(p, true)}</div></details>`;
+  $("product-dialog").showModal();
+  $("product-dialog").scrollTop = 0;
+}
+function chooseDetail(id) {
+  $("product-dialog").close();
+  add(id, detailRow);
 }
 function locationForm() {
   dlg(
@@ -324,12 +397,12 @@ function locationForm() {
     },
   );
 }
-function add(k) {
-  if (swap) {
-    const i = state.items.find((i) => i.id === swap);
+function add(k, row = swap) {
+  if (row !== null) {
+    const i = state.items.find((i) => i.id === row);
     i.product = k;
     i.snapshot = snapshot(products[k]);
-    i.store = state.store;
+    i.store = products[k].store;
     navTo("Shopping list");
     save();
     return;
@@ -341,7 +414,7 @@ function add(k) {
       product: k,
       snapshot: snapshot(products[k]),
       people: scope === "Shared" ? members() : [me()],
-      store: state.store,
+      store: products[k].store,
     },
     true,
   );
@@ -541,7 +614,7 @@ setInterval(() => {
   const day = today();
   if (
     day !== renderedDay &&
-    !$("modal").open &&
+    !$("modal").open && !$("product-dialog").open &&
     !["INPUT", "SELECT"].includes(document.activeElement?.tagName)
   ) {
     renderedDay = day;
