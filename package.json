@@ -1,0 +1,7 @@
+{
+  "name": "pantry-share",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}

@@ -1,6 +1,24 @@
 # Pantry Share
-A browser-local prototype for roommate grocery planning. Open dist/index.html in a browser, or serve dist with a static web server. There are no dependencies or credentials.
-## Try the draft
-Compare groceries at one demo store, select who shares each item, then check off items on the list and confirm the final tax-inclusive costs and payer. Budgets show personal shares and each roommate's available contribution based on their individual pay cycle. Monthly paydays clamp to the last calendar day when needed. Splits allocate remaining pennies in member order.
-## Prototype scope
-Use fictional data. Lists and budget settings persist only in the current browser. This is a single-user simulation, without Google authentication, household invitations, cross-device synchronization or access-controlled account storage. Each catalog product links to its retailer listing and uses a locally cached photo from that listing. Catalog prices and locations are illustrative. The 19107 fixture estimates tax on paper towels; other locations have no tax estimate. Confirm actual receipt amounts before using the ledger.
+
+Plan a grocery trip with roommates, compare package sizes at one store, and see who owes whom after checkout.
+
+[Open the hosted demo](https://pantry-share-roommates.dehuathemlgpro.chatgpt.site)
+
+![Pantry Share household shopping list](preview.jpg)
+
+## Try a grocery trip
+
+1. Choose a retailer under **Compare products**. Compare prices per unit, open the retailer’s listing, and add an item to your personal or household list.
+2. On the household list, select the roommates who share each item. Check off purchased items and enter their actual tax-inclusive prices and payer.
+3. Open **Receipts** to see the net balance between each pair of roommates. **Budgets** tracks personal and shared spending across individual pay cycles. You can edit household members and reset the demo here.
+
+## Run locally
+
+Open **docs/index.html** in a browser. To serve it locally, run `python3 -m http.server 8000 --directory docs` and open http://localhost:8000. Run `npm test` with Node 22 or later. No packages or credentials are required.
+
+## What the demo covers
+
+- The six stores have different selections. Prices are sample estimates, and availability is not checked live. Category icons appear in the app. Retailer links open the original product pages.
+- Demo tax is limited to paper towels in ZIP 19107. Try Walmart’s Bounty paper towels to see estimated tax. Elsewhere the app shows that tax is unavailable. Enter the receipt price after shopping. [Philadelphia sales tax](https://www.phila.gov/services/business-self-employment/business-taxes/sales-use-hotel-occupancy-tax/) · [Pennsylvania taxable purchases](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforbusinesses/sut/documents/rev-958.pdf)
+- This is a single-browser demo. Each list saves locally. Google accounts, invitations, and syncing across devices are future features. Use fictional paycheck amounts.
+- Earlier saves migrate to stable product IDs. Each item retains a description for receipts, even if it leaves the catalog. Resetting the demo clears this browser’s grocery records.
