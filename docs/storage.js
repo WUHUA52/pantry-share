@@ -95,7 +95,7 @@ function oldSnapshot(index, store) {
 function restore(state, products) {
   const text = (x) => typeof x === "string" && x.length > 0;
   const cents = (x) => Number.isSafeInteger(x) && x >= 0;
-  const store = (x) => Number.isInteger(x) && x >= 0 && x < 6;
+  const store = (x) => Number.isInteger(x) && x >= 0 && x < 10;
   const date = (x) =>
     text(x) &&
     /^\d{4}-\d{2}-\d{2}$/.test(x) &&

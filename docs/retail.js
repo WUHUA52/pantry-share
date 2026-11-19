@@ -8,6 +8,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/lehigh-valley-vitamin-d-whole-milk-1-2-gallon/165173",
     id: "sku-5994bf1ef59d",
+    image:
+      "https://assets.syndigo.cloud/cdn/dbdf16a4-5942-4f4f-8b1f-6a3b9ed08086/fileType_jpg;size_600x600/dbdf16a4-5942-4f4f-8b1f-6a3b9ed08086",
   },
   {
     name: "Our Brand Spaghetti Pasta",
@@ -18,6 +20,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-spaghetti-pasta-16-oz-box/56514",
     id: "sku-9fc000da66f0",
+    image:
+      "https://assets.syndigo.cloud/cdn/6a3a3499-a5f4-43ad-8752-19014b7d5cd3/fileType_jpg;size_600x600/6a3a3499-a5f4-43ad-8752-19014b7d5cd3",
   },
   {
     name: "San Giorgio Spaghetti Pasta",
@@ -28,6 +32,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/san-giorgio-spaghetti-pasta-16-oz-box/3136",
     id: "sku-046e8c2fafda",
+    image:
+      "https://assets.syndigo.cloud/cdn/7225f74d-bce6-4217-bb9a-175cf1421929/fileType_jpg;size_600x600/7225f74d-bce6-4217-bb9a-175cf1421929",
   },
   {
     name: "Our Brand Mild Yellow Cheddar Cheese Block",
@@ -38,6 +44,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-mild-yellow-cheddar-cheese-block-8-oz-pkg/209376",
     id: "sku-449cf52921aa",
+    image:
+      "https://assets.syndigo.cloud/cdn/a5e9af18-b577-44a0-bf8b-83877e7eb7f5/fileType_jpg;size_600x600/a5e9af18-b577-44a0-bf8b-83877e7eb7f5",
   },
   {
     name: "Our Brand Traditionally Shredded Mild Cheddar Cheese",
@@ -48,6 +56,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-traditionally-shredded-mild-cheddar-cheese-8-oz-bag/57841",
     id: "sku-9a7c958e28e2",
+    image:
+      "https://assets.syndigo.cloud/cdn/60b1583f-d44f-44ea-ad79-b2ed4f884fc9/fileType_jpg;size_600x600/60b1583f-d44f-44ea-ad79-b2ed4f884fc9",
   },
   {
     name: "Our Brand Quick Rolled Oats",
@@ -58,6 +68,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-quick-rolled-oats-18-oz-can/197857",
     id: "sku-e8dd9b92c4c8",
+    image:
+      "https://assets.syndigo.cloud/cdn/8eb3f7e1-2e39-4294-b017-643b1085055c/fileType_jpg;size_600x600/8eb3f7e1-2e39-4294-b017-643b1085055c",
   },
   {
     name: "Our Brand Old Fashioned Rolled Oats",
@@ -68,6 +80,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-old-fashioned-rolled-oats-18-oz-pkg/57817",
     id: "sku-62e071b0df42",
+    image:
+      "https://assets.syndigo.cloud/cdn/ebf0a760-5f45-4c72-a8cf-a40025d4dced/fileType_jpg;size_600x600/ebf0a760-5f45-4c72-a8cf-a40025d4dced",
   },
   {
     name: "Our Brand Cage Free Large Brown Eggs - 12 ct",
@@ -78,6 +92,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-cage-free-large-brown-eggs-12-ct-1-doz/222594",
     id: "sku-743fd6e36e43",
+    image:
+      "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https%3A//assets.edgenet.com/035261d0-6527-4ce5-8889-95fe1318c153%3Fsize%3D600x600",
   },
   {
     name: "Nature's Own Whole Grain 100% Whole Wheat Bread Sliced",
@@ -88,6 +104,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/natures-own-whole-grain-100-whole-wheat-bread-sliced-20-oz-pkg/154239",
     id: "sku-9c976a9e54c7",
+    image:
+      "https://assets.syndigo.cloud/cdn/f752a2d1-5463-4bc8-8027-2b5a2beb2181/fileType_jpg;size_600x600/f752a2d1-5463-4bc8-8027-2b5a2beb2181",
   },
   {
     name: "Our Brand Long Grain White Rice",
@@ -98,6 +116,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-long-grain-white-rice-32-oz-bag/88417",
     id: "sku-13fe838a4183",
+    image:
+      "https://assets.syndigo.cloud/cdn/51d29bfd-fc72-4135-97b4-b7a7307414e8/fileType_jpg;size_600x600/51d29bfd-fc72-4135-97b4-b7a7307414e8",
   },
   {
     name: "Our Brand Black Beans",
@@ -108,6 +128,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-black-beans-15-5-oz-can/56409",
     id: "sku-cf78efb0684f",
+    image:
+      "https://res.cloudinary.com/syndigo/image/fetch/f_jpg/https%3A//assets.edgenet.com/b7c05217-6610-42ce-95c7-48c9817fa52c%3Fsize%3D600x600",
   },
   {
     name: "Strawberries",
@@ -118,6 +140,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/strawberries-16-oz-pkg/118795",
     id: "sku-85f6d87be12c",
+    image:
+      "https://assets.syndigo.cloud/cdn/ff480b0b-07cb-43fe-952a-d1e090876735/fileType_jpg;size_600x600/ff480b0b-07cb-43fe-952a-d1e090876735",
   },
   {
     name: "Our Brand Non Fat Plain Greek Yogurt",
@@ -128,6 +152,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-non-fat-plain-greek-yogurt-32-oz-tub/392625",
     id: "sku-8cff95e2c7e8",
+    image:
+      "https://assets.syndigo.cloud/cdn/4d889380-62d2-46da-9acc-7b70522fcc95/fileType_jpg;size_600x600/4d889380-62d2-46da-9acc-7b70522fcc95",
   },
   {
     name: "Our Brand Broccoli Florets Frozen",
@@ -138,6 +164,8 @@ const retailProducts = [
     store: 0,
     url: "https://giantfoodstores.com/groceries/product/our-brand-broccoli-florets-frozen-12-oz-bag/414305",
     id: "sku-a24cead91c56",
+    image:
+      "https://assets.syndigo.cloud/cdn/e13067fb-304f-4dfa-8b38-148d94d339cd/fileType_jpg;size_600x600/e13067fb-304f-4dfa-8b38-148d94d339cd",
   },
   {
     name: "Price Whole Milk - 0.5gal",
@@ -148,6 +176,8 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-84031590",
     id: "sku-b956a0dbf7b1",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_69495754-4e76-4575-8cd9-ad2bc86b5343?wid=450&hei=450&fmt=jpeg",
   },
   {
     name: "United Whole Milk - 0.5gal",
@@ -158,9 +188,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-85650381",
     id: "sku-1645490c2d61",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_dab98560-c271-428a-9d35-308455afa446?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Spaghetti - 16oz - Good & Gather\u2122",
+    name: "Spaghetti - 16oz - Good & Gather™",
     cat: "Pasta",
     size: 16,
     unit: "oz",
@@ -168,6 +200,8 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-78779052",
     id: "sku-7fa1135abdd8",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_6cc172de-bc54-4bc5-9b0d-4e5bf09bd7b5?wid=450&hei=450&fmt=jpeg",
   },
   {
     name: "Crystal Farms Cheddar Cheese - 8oz",
@@ -178,9 +212,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-92908305",
     id: "sku-74111b110b33",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_6034a54c-18d4-4903-bde8-a42a166a48bf?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Sharp Cheddar Cheese - 8oz - Good & Gather\u2122",
+    name: "Sharp Cheddar Cheese - 8oz - Good & Gather™",
     cat: "Cheese",
     size: 8,
     unit: "oz",
@@ -188,9 +224,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-54340519",
     id: "sku-3852595442ec",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_74256b43-508c-4bb6-84ce-fb8117c08da0?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Old Fashioned Oats - 18oz - Good & Gather\u2122",
+    name: "Old Fashioned Oats - 18oz - Good & Gather™",
     cat: "Oats",
     size: 18,
     unit: "oz",
@@ -198,9 +236,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-79364883",
     id: "sku-7fa14231588a",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_d6631997-d860-4154-b090-0cdb238e017a?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Grade A Extra Large Eggs - 12ct - Good & Gather\u2122",
+    name: "Grade A Extra Large Eggs - 12ct - Good & Gather™",
     cat: "Eggs",
     size: 12,
     unit: "egg",
@@ -208,6 +248,8 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-14713532",
     id: "sku-0828b02ed405",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_1020a164-e3cb-4d22-b5f3-457e61f7799c?wid=450&hei=450&fmt=jpeg",
   },
   {
     name: "100% Whole Wheat Bread 20oz - Market Pantry",
@@ -218,9 +260,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-14766199",
     id: "sku-a67ad10c0661",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_f734d1de-a448-4f21-a872-2c1ee457a057?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Enriched Long Grain White Rice - 32oz - Good & Gather\u2122",
+    name: "Enriched Long Grain White Rice - 32oz - Good & Gather™",
     cat: "Rice",
     size: 32,
     unit: "oz",
@@ -228,6 +272,8 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-54602335",
     id: "sku-0071c6c2a676",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_b656a926-bfe1-4ecf-878e-2bddf3560697?wid=450&hei=450&fmt=jpeg",
   },
   {
     name: "Bush's Black Beans - 15oz: Low Fat, Gluten-Free, No Added Sugar",
@@ -238,6 +284,8 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-13536162",
     id: "sku-5caa7edf4565",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_2015aa18-c7dc-44c4-b1b7-5b88bf13bca5?wid=450&hei=450&fmt=jpeg",
   },
   {
     name: "Fresh Organic Strawberries - 16oz",
@@ -248,9 +296,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-85762475",
     id: "sku-2c6219089f19",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_665836ac-f8bf-402e-9833-387ae424a1e7?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Greek Plain Yogurt - 32oz - Good & Gather\u2122",
+    name: "Greek Plain Yogurt - 32oz - Good & Gather™",
     cat: "Yogurt",
     size: 32,
     unit: "oz",
@@ -258,9 +308,11 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-94895373",
     id: "sku-d0f3e70ceaba",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_8f58077d-6b7b-4150-bba1-869f0b1b21ec?wid=450&hei=450&fmt=jpeg",
   },
   {
-    name: "Frozen Broccoli Florets - 12oz - Good & Gather\u2122",
+    name: "Frozen Broccoli Florets - 12oz - Good & Gather™",
     cat: "Vegetables",
     size: 12,
     unit: "oz",
@@ -268,6 +320,8 @@ const retailProducts = [
     store: 1,
     url: "https://www.target.com/p/-/A-79397039",
     id: "sku-1cd65e8c5d2b",
+    image:
+      "https://target.scene7.com/is/image/Target/GUEST_a37266ff-f35a-4c8b-877b-13f0dd23d2e9?wid=450&hei=450&fmt=jpeg",
   },
   {
     name: "Great Value Spaghetti",
@@ -278,6 +332,8 @@ const retailProducts = [
     store: 2,
     url: "https://www.walmart.com/ip/Great-Value-Spaghetti-16oz/10534115",
     id: "sku-cf6e69fa8f2c",
+    image:
+      "https://i5.walmartimages.com/seo/Great-Value-Spaghetti-16oz_9d73f340-4055-4b1d-89f4-64737450f334.491ce515e9904db0e49eeb751e856691.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
   },
   {
     name: "Quaker Quick Oats 18oz",
@@ -288,6 +344,8 @@ const retailProducts = [
     store: 2,
     url: "https://www.walmart.com/ip/Quaker-Whole-Grain-Oats-Quick-1-Minute-Instant-Oats-18oz/10312440",
     id: "sku-6eeeed396f66",
+    image:
+      "https://i5.walmartimages.com/seo/Quaker-Whole-Grain-Oats-Quick-1-Minute-Instant-Oats-18oz_877c385a-9add-4414-ae7a-b08eeaabe9a4.ced9829a20b2cd351d171c3ddfcf64fd.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
   },
   {
     name: "Maola Whole Milk",
@@ -298,6 +356,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/937027-Whole-Milk",
     id: "sku-5d381025bf32",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/937027_PrimaryImage?v=bae7feab310f203d9c844840ea06b7097210c319",
   },
   {
     name: "Homestead Creamery Milk, Whole, Chocolate",
@@ -308,6 +368,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/709682",
     id: "sku-51ef4434da8d",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/709682_PrimaryImage?v=32969044d0e821d2ff6ca6d70d350c4fdbb0cde7",
   },
   {
     name: "Wegmans Spaghetti Pasta",
@@ -318,6 +380,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/60164-Spaghetti-Pasta",
     id: "sku-662ea8a2574d",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/60164_PrimaryImage?v=51a581983814e1e63cc9920ca4a0e8db6814416c",
   },
   {
     name: "Wegmans Sharp Cheddar Cheese",
@@ -328,6 +392,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/83588",
     id: "sku-b7c9a2bf4d23",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/83588_PrimaryImage?v=76191be160a54f0b065ab98e9408683ca2235e67",
   },
   {
     name: "Wegmans Cheese, Cheddar, Sharp, White",
@@ -338,6 +404,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/83600-Cheese-Cheddar-Sharp-White",
     id: "sku-a2f32251b272",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/83600_PrimaryImage?v=65ad7ea68097710570793cde52327b46271649bd",
   },
   {
     name: "Wegmans Oats, Old Fashioned",
@@ -348,6 +416,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/41369-Oats-Old-Fashioned",
     id: "sku-ea26dc10ee28",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/41369_PrimaryImage?v=f83b2f535cd0f5bfe023c501199157f2280bca26",
   },
   {
     name: "Wegmans Cage Free Large Eggs",
@@ -358,6 +428,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/52603",
     id: "sku-1078c816bc85",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/52603_PrimaryImage?v=af5d39905712743967fb89175122cfdf2a6035e9",
   },
   {
     name: "Nature's Own 100% Whole Wheat Bread",
@@ -368,6 +440,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/273441-100-Whole-Wheat-Bread",
     id: "sku-9d37d8543f97",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/273441_PrimaryImage?v=03c43c4d66785b0845eb65a29d33ffac29e1d6d8",
   },
   {
     name: "Wegmans Organic Long Grain White Rice",
@@ -378,6 +452,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/56701",
     id: "sku-e0e59b8c14bc",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/56701_PrimaryImage?v=f14909a1f5f95c99474169221ddbda10572f9d4c",
   },
   {
     name: "Wegmans Black Beans",
@@ -388,6 +464,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/10328-Black-Beans",
     id: "sku-7e8a5f493aea",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/10328_PrimaryImage?v=47c4890fb43a184df5ea6a3b748d1876392b71f0",
   },
   {
     name: "Strawberries",
@@ -398,6 +476,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/225689",
     id: "sku-ebc8b8dd5b70",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/225689_PrimaryImage?v=f50a433b4b1c6959794d65584e7185085a5f84ea",
   },
   {
     name: "Wegmans 0% Greek Plain Nonfat Yogurt",
@@ -408,6 +488,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/25605-Greek-Plain-Nonfat-Yogurt",
     id: "sku-243c909d9dbb",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/25605_PrimaryImage?v=5872eb45be8e20e70f2a1014fbbbb197a7dfb91d",
   },
   {
     name: "Wegmans Steamable Broccoli Florets",
@@ -418,6 +500,8 @@ const retailProducts = [
     store: 3,
     url: "https://www.wegmans.com/shop/product/62358-Frozen-Broccoli-Florets",
     id: "sku-d86415731771",
+    image:
+      "https://images.wegmans.com/is/image/wegmanscsprod/62358_PrimaryImage?v=72bc96cc20cdd378afdc7e20f74ca03b7e5643f2",
   },
   {
     name: "Friendly Farms Vitamin D Whole Milk",
@@ -428,6 +512,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/18647583-friendly-farms-whole-milk-0-5-gal",
     id: "sku-ec138d9a636e",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3e06b4ed-686e-4cd2-a478-3245ce04647d.jpg",
   },
   {
     name: "Simply Nature Organic Spaghetti",
@@ -438,6 +524,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/18648690-simply-nature-organic-spaghetti-pasta-16-oz",
     id: "sku-3ed3e8d94483",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_56e030b7-046e-4f88-be67-c4f4ee1505c6.jpg",
   },
   {
     name: "Priano Bronze Cut Spaghetti",
@@ -448,6 +536,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/34917883-priano-bronze-cut-spaghetti-16-oz",
     id: "sku-bd8af0ffc96a",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_962e58dc-40b6-44bb-9701-64fa39b2c5e1.jpg",
   },
   {
     name: "Happy Farms Mild Cheddar Cheese Block",
@@ -458,6 +548,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/18647864-happy-farms-mild-cheddar-cheese-block-8-oz",
     id: "sku-d7a552226642",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_cba97e3e-9c31-46ec-bdee-d17c48bd6e40.jpg",
   },
   {
     name: "Emporium Selection Aged Cheddar Cheese",
@@ -468,6 +560,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/112683107-emporium-selection-aged-cheddar-8-oz",
     id: "sku-407c17556d4e",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_f21b6a42-136f-48d4-a986-669b7eec39ad.jpg",
   },
   {
     name: "Millville Old Fashioned Rolled Oats",
@@ -478,6 +572,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/18647728-millville-hearty-100-whole-grain-old-fashioned-rolled-oats-42-oz",
     id: "sku-62508f32e34f",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_7d24aaf4-a50e-46e0-a23a-76eb27040792.jpg",
   },
   {
     name: "Goldhen Large Grade A Eggs - 1 Dozen",
@@ -488,6 +584,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/115095-goldhen-grade-a-large-eggs-12-ct",
     id: "sku-770a7b2405b0",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_32d401d6-6b1f-4231-ade3-19ed0ab7071b.jpg",
   },
   {
     name: "L'oven Fresh 100% Whole Wheat Bread, 20 oz",
@@ -498,6 +596,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/20114923-l-oven-fresh-100-whole-wheat-bread-20-oz",
     id: "sku-1ed8ea2a4c2b",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a658e7f1-69cf-46dc-b5a5-e4de38ed0e05.jpg",
   },
   {
     name: "Earthly Grains Microwaveable Instant White Rice",
@@ -508,6 +608,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/18647722-earthly-grains-instant-white-rice-28-oz",
     id: "sku-8ce076e5f8e5",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a69cf113-c81d-44ce-ae99-5863cb68696a.jpg",
   },
   {
     name: "Aldi Black Beans",
@@ -518,6 +620,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/128146090-aldi-black-beans-15-oz",
     id: "sku-af405d3c58f0",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_ad2905e4-3d21-4264-ae9d-2f41aca2473d.jpg",
   },
   {
     name: "Friendly Farms Nonfat Plain Greek Yogurt",
@@ -528,6 +632,8 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/20249671-friendly-farms-nonfat-plain-greek-yogurt-32-oz",
     id: "sku-ccbff17db7d2",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_e1687237-629e-499a-b213-e40fae5b59ec.jpg",
   },
   {
     name: "Season's Choice Frozen Steamed Broccoli Florets",
@@ -538,9 +644,11 @@ const retailProducts = [
     store: 4,
     url: "https://www.aldi.us/store/aldi/products/26548777-season-s-choice-steamable-frozen-broccoli-florets-12-oz",
     id: "sku-5c5241ed2c33",
+    image:
+      "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_407b84fe-922c-4bc0-81bd-6793aa8ff867.jpg",
   },
   {
-    name: "Kroger\u00ae Spaghetti, 16 oz",
+    name: "Kroger® Spaghetti, 16 oz",
     cat: "Pasta",
     size: 16,
     unit: "oz",
@@ -548,9 +656,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-spaghetti-pasta/0001111085004",
     id: "sku-7479b212a291",
+    image: "https://www.kroger.com/product/images/large/front/0001111085004",
   },
   {
-    name: "Kroger\u00ae Mild Cheddar Cheese Block, 8 oz",
+    name: "Kroger® Mild Cheddar Cheese Block, 8 oz",
     cat: "Cheese",
     size: 8,
     unit: "oz",
@@ -558,9 +667,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-mild-cheddar-cheese-block/0001111058625",
     id: "sku-1f10fc60a8fc",
+    image: "https://www.kroger.com/product/images/large/front/0001111058625",
   },
   {
-    name: "Simple Truth Organic\u00ae 100% Whole Grain Rolled 1 Minute Oats, 18 oz",
+    name: "Simple Truth Organic® 100% Whole Grain Rolled 1 Minute Oats, 18 oz",
     cat: "Oats",
     size: 18,
     unit: "oz",
@@ -568,9 +678,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/simple-truth-organic-100-whole-grain-rolled-1-minute-oats/0001111002805?cid=dis.api.tpi_products-api_20240521_b%3Aall_c%3Ap_t%3Arecipe-reelscom-bbch",
     id: "sku-d385adc04f44",
+    image: "https://www.kroger.com/product/images/large/front/0001111002805",
   },
   {
-    name: "Kroger\u00ae Grade A Large White Eggs, 12 ct",
+    name: "Kroger® Grade A Large White Eggs, 12 ct",
     cat: "Eggs",
     size: 12,
     unit: "egg",
@@ -578,9 +689,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-grade-a-large-white-eggs/0001111060903",
     id: "sku-1790a61cacdc",
+    image: "https://www.kroger.com/product/images/large/front/0001111060903",
   },
   {
-    name: "Kroger\u00ae Market & Mill\u2122 Wheat Bread, 20 oz",
+    name: "Kroger® Market & Mill™ Wheat Bread, 20 oz",
     cat: "Bread",
     size: 20,
     unit: "oz",
@@ -588,9 +700,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-market-mill-wheat-bread/0001111002794",
     id: "sku-63b00548649a",
+    image: "https://www.kroger.com/product/images/large/front/0001111002794",
   },
   {
-    name: "Kroger\u00ae Enriched Long Grain White Rice, 32 oz",
+    name: "Kroger® Enriched Long Grain White Rice, 32 oz",
     cat: "Rice",
     size: 32,
     unit: "oz",
@@ -598,9 +711,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-long-grain-white-rice/0001111089875",
     id: "sku-dd0006b49b82",
+    image: "https://www.kroger.com/product/images/large/front/0001111089875",
   },
   {
-    name: "Kroger\u00ae Black Beans, 15.5 oz",
+    name: "Kroger® Black Beans, 15.5 oz",
     cat: "Beans",
     size: 15.5,
     unit: "oz",
@@ -608,6 +722,7 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-black-beans/0001111010647",
     id: "sku-67ec7456f01e",
+    image: "https://www.kroger.com/product/images/large/front/0001111010647",
   },
   {
     name: "Strawberries, 16 OZ",
@@ -618,9 +733,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/strawberries/0003338320129",
     id: "sku-d7b55407f056",
+    image: "https://www.kroger.com/product/images/large/front/0003338320129",
   },
   {
-    name: "Kroger\u00ae Plain Nonfat Greek Yogurt Tub, 32 oz",
+    name: "Kroger® Plain Nonfat Greek Yogurt Tub, 32 oz",
     cat: "Yogurt",
     size: 32,
     unit: "oz",
@@ -628,9 +744,10 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/kroger-plain-nonfat-greek-yogurt-tub/0001111002817",
     id: "sku-344cbe519f9b",
+    image: "https://www.kroger.com/product/images/large/front/0001111002817",
   },
   {
-    name: "Kroger\u00ae Frozen Broccoli Florets, 12 oz",
+    name: "Kroger® Frozen Broccoli Florets, 12 oz",
     cat: "Vegetables",
     size: 12,
     unit: "oz",
@@ -638,6 +755,7 @@ const retailProducts = [
     store: 5,
     url: "https://www.kroger.com/p/product/0001111012841",
     id: "sku-ec310d587370",
+    image: "https://www.kroger.com/product/images/large/front/0001111012841",
   },
   {
     name: "Great Value Large White Eggs, 12 Count",
@@ -648,6 +766,8 @@ const retailProducts = [
     unit: "egg",
     price: 359,
     id: "sku-113d2ea327ec",
+    image:
+      "https://i5.walmartimages.com/seo/Great-Value-Large-White-Eggs-12-Count_b6760ce4-ef2b-4ee7-9c54-1e573897ad73.0e934a9843adc83711b5c933c7777f52.jpeg?odnBg=FFFFFF&odnHeight=450&odnWidth=450",
   },
   {
     name: "Great Value Milk Whole Vitamin D, Half Gallon, 64 fl oz",
@@ -658,6 +778,8 @@ const retailProducts = [
     unit: "fl oz",
     price: 309,
     id: "sku-0080d212deb1",
+    image:
+      "https://i5.walmartimages.com/seo/Great-Value-Milk-Whole-Vitamin-D-Half-Gallon-Plastic-Jug-64oz_52ec45c4-586d-42c0-a42c-93218631e277.ec8d19bdf634f97445cbf455eac874a8.jpeg?odnBg=FFFFFF&odnHeight=450&odnWidth=450",
   },
   {
     name: "Great Value Black Beans, 15 oz",
@@ -668,6 +790,8 @@ const retailProducts = [
     unit: "oz",
     price: 109,
     id: "sku-bc8f3efd7926",
+    image:
+      "https://i5.walmartimages.com/seo/Great-Value-Black-Beans-15-oz-Can_eda74fce-1af9-45bc-8f56-05721b6abb52.111c67135274d7670ad44553d567d9d6.jpeg?odnBg=FFFFFF&odnHeight=450&odnWidth=450",
   },
   {
     name: "Great Value Sharp Cheddar Finely Shredded Cheese, 8 oz Bag",
@@ -678,6 +802,8 @@ const retailProducts = [
     unit: "oz",
     price: 249,
     id: "sku-535c4e093ade",
+    image:
+      "https://i5.walmartimages.com/seo/Great-Value-Finely-Shredded-Sharp-Cheddar-Cheese-8-oz_3f490f17-2f67-4e06-9080-4d1c1aa9312e.783aa9b49dcdb9e518be4f97f7a4f158.jpeg?odnBg=FFFFFF&odnHeight=450&odnWidth=450",
   },
   {
     id: "walmart-414519021",
@@ -688,5 +814,331 @@ const retailProducts = [
     unit: "roll",
     size: 2,
     url: "https://www.walmart.com/ip/414519021",
+    image:
+      "https://i5.walmartimages.com/seo/Bounty-Select-A-Size-Paper-Towels-White-2-Double-Rolls_e0cba41f-9de1-40c6-8864-fa3acce594bd.5bff67bd0f612b8c673f2ccded39dfa1.jpeg",
+  },
+  {
+    name: "Food Lion Spaghetti Pasta",
+    cat: "Pasta",
+    store: 6,
+    url: "https://foodlion.com/groceries/product/food-lion-spaghetti-pasta-16-oz-box/296997",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/c9bdc52e-8594-49d8-b6b2-c2e80dcde60a/fileType_jpg;size_600x600/c9bdc52e-8594-49d8-b6b2-c2e80dcde60a",
+    id: "sku-d150f62635f3",
+    price: 192,
+  },
+  {
+    name: "Food Lion Spaghetti Pasta",
+    cat: "Pasta",
+    store: 6,
+    url: "https://www.foodlion.com/groceries/product/food-lion-spaghetti-pasta-16-oz-box/296997",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/c9bdc52e-8594-49d8-b6b2-c2e80dcde60a/fileType_jpg;size_600x600/c9bdc52e-8594-49d8-b6b2-c2e80dcde60a",
+    id: "sku-9e5205509768",
+    price: 192,
+  },
+  {
+    name: "Food Lion Seasoned Black Beans",
+    cat: "Beans",
+    store: 6,
+    url: "https://foodlion.com/groceries/product/food-lion-seasoned-black-beans-15-oz-can/359575",
+    size: 15,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/8b85c577-eab9-4909-aa88-ad5eac553999/fileType_jpg;size_600x600/8b85c577-eab9-4909-aa88-ad5eac553999",
+    id: "sku-c01be7d9ed13",
+    price: 128,
+  },
+  {
+    name: "Food Lion 100% Whole Grain Old Fashioned Rolled Oats",
+    cat: "Oats",
+    store: 6,
+    url: "https://foodlion.com/groceries/product/food-lion-100-whole-grain-old-fashioned-rolled-oats-18-oz-can/295415",
+    size: 18,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/14ae11d2-346b-4673-ba46-68059316100e/fileType_jpg;size_600x600/14ae11d2-346b-4673-ba46-68059316100e",
+    id: "sku-3a9af1aad5fb",
+    price: 342,
+  },
+  {
+    name: "Food Lion Natural Extra Sharp New York Cheddar Cheese Block",
+    cat: "Cheese",
+    store: 6,
+    url: "https://foodlion.com/groceries/product/food-lion-natural-extra-sharp-new-york-cheddar-cheese-block-8-oz-pkg/296531",
+    size: 8,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/2afca14e-80fc-4f57-a3c4-58c1e0c366a0/fileType_jpg;size_600x600/2afca14e-80fc-4f57-a3c4-58c1e0c366a0",
+    id: "sku-67d429a89964",
+    price: 275,
+  },
+  {
+    name: "Strawberries",
+    cat: "Fruit",
+    store: 6,
+    url: "https://foodlion.com/groceries/product/strawberries-16-oz-pkg/118795",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/ff480b0b-07cb-43fe-952a-d1e090876735/fileType_jpg;size_600x600/ff480b0b-07cb-43fe-952a-d1e090876735",
+    id: "sku-1c2c6e90c122",
+    price: 425,
+  },
+  {
+    name: "Stop & Shop Spaghetti Pasta",
+    cat: "Pasta",
+    store: 7,
+    url: "https://stopandshop.com/groceries/product/stop-shop-spaghetti-pasta-16-oz-box/56514",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/6a3a3499-a5f4-43ad-8752-19014b7d5cd3/fileType_jpg;size_600x600/6a3a3499-a5f4-43ad-8752-19014b7d5cd3",
+    id: "sku-ddf3c54f0fd8",
+    price: 192,
+  },
+  {
+    name: "Stop & Shop Seasoned Black Beans",
+    cat: "Beans",
+    store: 7,
+    url: "https://stopandshop.com/groceries/product/stop-shop-seasoned-black-beans-15-oz-can/356347",
+    size: 15,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/513c8f46-b132-4300-b070-c1224ee554db/fileType_jpg;size_600x600/513c8f46-b132-4300-b070-c1224ee554db",
+    id: "sku-c516350a0e54",
+    price: 128,
+  },
+  {
+    name: "Stop & Shop Quick Rolled Oats",
+    cat: "Oats",
+    store: 7,
+    url: "https://stopandshop.com/groceries/product/stop-shop-quick-rolled-oats-18-oz-can/197857",
+    size: 18,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/8eb3f7e1-2e39-4294-b017-643b1085055c/fileType_jpg;size_600x600/8eb3f7e1-2e39-4294-b017-643b1085055c",
+    id: "sku-228f1aaaa1d4",
+    price: 342,
+  },
+  {
+    name: "Stop & Shop Mild Yellow Cheddar Cheese Block",
+    cat: "Cheese",
+    store: 7,
+    url: "https://stopandshop.com/groceries/product/stop-shop-mild-yellow-cheddar-cheese-block-8-oz-pkg/209376",
+    size: 8,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/a5e9af18-b577-44a0-bf8b-83877e7eb7f5/fileType_jpg;size_600x600/a5e9af18-b577-44a0-bf8b-83877e7eb7f5",
+    id: "sku-51701caaed34",
+    price: 275,
+  },
+  {
+    name: "Strawberries",
+    cat: "Fruit",
+    store: 7,
+    url: "https://stopandshop.com/groceries/product/strawberries-16-oz-pkg/118795",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/ff480b0b-07cb-43fe-952a-d1e090876735/fileType_jpg;size_600x600/ff480b0b-07cb-43fe-952a-d1e090876735",
+    id: "sku-8a9c02713bb7",
+    price: 425,
+  },
+  {
+    name: "Our Brand Spaghetti Pasta",
+    cat: "Pasta",
+    store: 8,
+    url: "https://martinsfoods.com/groceries/product/our-brand-spaghetti-pasta-16-oz-box/56514",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/6a3a3499-a5f4-43ad-8752-19014b7d5cd3/fileType_jpg;size_600x600/6a3a3499-a5f4-43ad-8752-19014b7d5cd3",
+    id: "sku-e388d2de1481",
+    price: 192,
+  },
+  {
+    name: "Our Brand Seasoned Black Beans",
+    cat: "Beans",
+    store: 8,
+    url: "https://martinsfoods.com/groceries/product/our-brand-seasoned-black-beans-15-oz-can/356347",
+    size: 15,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/513c8f46-b132-4300-b070-c1224ee554db/fileType_jpg;size_600x600/513c8f46-b132-4300-b070-c1224ee554db",
+    id: "sku-6d11965a66a6",
+    price: 128,
+  },
+  {
+    name: "Our Brand Old Fashioned Rolled Oats",
+    cat: "Oats",
+    store: 8,
+    url: "https://martinsfoods.com/groceries/product/our-brand-old-fashioned-rolled-oats-18-oz-pkg/57817",
+    size: 18,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/ebf0a760-5f45-4c72-a8cf-a40025d4dced/fileType_jpg;size_600x600/ebf0a760-5f45-4c72-a8cf-a40025d4dced",
+    id: "sku-94e31a29ed0b",
+    price: 342,
+  },
+  {
+    name: "Our Brand Reduced Fat Sharp Yellow Cheddar Cheese Block",
+    cat: "Cheese",
+    store: 8,
+    url: "https://martinsfoods.com/groceries/product/our-brand-reduced-fat-sharp-yellow-cheddar-cheese-block-8-oz-pkg/190639",
+    size: 8,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/04dfad37-ef10-4a9d-b10b-3d45006bd1b6/fileType_jpg;size_600x600/04dfad37-ef10-4a9d-b10b-3d45006bd1b6",
+    id: "sku-344c173d34e5",
+    price: 275,
+  },
+  {
+    name: "Our Brand Whole Strawberries Frozen",
+    cat: "Fruit",
+    store: 8,
+    url: "https://martinsfoods.com/groceries/product/our-brand-whole-strawberries-frozen-16-oz-bag/58237",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://assets.syndigo.cloud/cdn/1c78208c-5208-493d-b406-9ddbcd3b92a9/fileType_jpg;size_600x600/1c78208c-5208-493d-b406-9ddbcd3b92a9",
+    id: "sku-5082776dbf0c",
+    price: 425,
+  },
+  {
+    name: "Barilla Spaghetti Pasta - 16 Oz",
+    cat: "Pasta",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/barilla-spaghetti-pasta-16-oz/128200289",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/128200289?wid=440&hei=440",
+    id: "sku-ee86061766e7",
+    price: 192,
+  },
+  {
+    name: "Barilla Whole Grain Spaghetti Pasta - 16 Oz",
+    cat: "Pasta",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/barilla-whole-grain-spaghetti-pasta-16-oz/960150487",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/960150487?wid=440&hei=440",
+    id: "sku-6fbf9826baf4",
+    price: 192,
+  },
+  {
+    name: "Lucerne Milk - Half Gallon (container may vary)",
+    cat: "Milk",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/lucerne-milk-half-gallon-container-may-vary/136010013",
+    size: 64,
+    unit: "fl oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/136010013?wid=440&hei=440",
+    id: "sku-d33bd6fcb1b6",
+    price: 355,
+  },
+  {
+    name: "a2 Milk Whole Milk - Half Gallon",
+    cat: "Milk",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/a2-milk-whole-milk-half-gallon/960158209",
+    size: 64,
+    unit: "fl oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/960158209?wid=440&hei=440",
+    id: "sku-6e80083e13b6",
+    price: 355,
+  },
+  {
+    name: "Bush's Black Beans - 15 Oz",
+    cat: "Beans",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/bushs-black-beans-15-oz/124150102",
+    size: 15,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/124150102?wid=440&hei=440",
+    id: "sku-aa5f868897bb",
+    price: 128,
+  },
+  {
+    name: "Bush's Organic Black Beans - 15 Oz",
+    cat: "Beans",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/bushs-organic-black-beans-15-oz/960235366",
+    size: 15,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/960235366?wid=440&hei=440",
+    id: "sku-84b5b5995ceb",
+    price: 128,
+  },
+  {
+    name: "Signature SELECT Old Fashioned Oats - 18 Oz",
+    cat: "Oats",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/signature-select-old-fashioned-oats-18-oz/111050252",
+    size: 18,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/111050252?wid=440&hei=440",
+    id: "sku-c3d7effb0426",
+    price: 342,
+  },
+  {
+    name: "Signature SELECT Quick Oats - 18 Oz",
+    cat: "Oats",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/signature-select-quick-oats-18-oz/111050068",
+    size: 18,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/111050068?wid=440&hei=440",
+    id: "sku-27fdec79ff70",
+    price: 342,
+  },
+  {
+    name: "Sargento Shredded Sharp Natural Cheddar Cheese - 8 Oz",
+    cat: "Cheese",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/sargento-shredded-sharp-natural-cheddar-cheese-8-oz/137050767",
+    size: 8,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/137050767?wid=440&hei=440",
+    id: "sku-51374bd74aa6",
+    price: 275,
+  },
+  {
+    name: "Strawberries Prepacked - 1 Lb",
+    cat: "Fruit",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/strawberries-prepacked-1-lb/184070124",
+    size: 16,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/184070124?wid=440&hei=440",
+    id: "sku-5a27294bb0c1",
+    price: 425,
+  },
+  {
+    name: "Strawberries Prepacked - 2 Lb",
+    cat: "Fruit",
+    store: 9,
+    url: "https://www.acmemarkets.com/shop/pd/strawberries-prepacked-2-lb/960012546",
+    size: 32,
+    unit: "oz",
+    image:
+      "https://images.albertsons-media.com/is/image/ABS/960012546?wid=440&hei=440",
+    id: "sku-b43fe8add40a",
+    price: 850,
   },
 ];

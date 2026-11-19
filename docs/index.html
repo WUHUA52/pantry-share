@@ -8,19 +8,28 @@
   ><link rel="stylesheet" href="style.css" />
   <header>
     <div class="wrap mast">
-      <b class="brand">✳ Pantry Share</b><span>Maple House <i>MH</i></span>
+      <b class="brand">Pantry Share.</b><span class="house">Maple House</span>
     </div>
   </header>
   <main class="wrap">
-    <div class="eyebrow">MAPLE HOUSE / GROCERIES</div>
-    <h1>At the kitchen table.</h1>
-    <p class="intro">
-      Your household’s groceries, from shopping list to split receipt.
-    </p>
-    <p id="status" role="status"></p>
-    <div id="stats"></div>
-    <nav id="nav"></nav>
-    <div id="view"></div>
+    <nav id="nav" aria-label="Household tools"></nav>
+    <section class="counter">
+      <div class="work">
+        <h1 id="page-title">Shopping list</h1>
+        <p id="status" role="status"></p>
+        <div id="view"></div>
+      </div>
+      <aside class="receipt">
+        <div class="receipt-head">
+          <span>Maple House</span>
+          <h2>Grocery budget</h2>
+        </div>
+        <div id="stats"></div>
+        <button class="receipt-link" onclick="navTo('Budgets')">
+          Manage budget
+        </button>
+      </aside>
+    </section>
     <footer>
       Demo household · Sample prices · Saved on this browser. Use fictional
       amounts.

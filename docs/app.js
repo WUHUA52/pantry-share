@@ -13,7 +13,18 @@ const $ = (id) => document.getElementById(id),
           "'": "&#39;",
         })[c],
     );
-const stores = ["GIANT", "Target", "Walmart", "Wegmans", "ALDI", "Kroger"];
+const stores = [
+  "GIANT",
+  "Target",
+  "Walmart",
+  "Wegmans",
+  "ALDI",
+  "Kroger",
+  "Food Lion",
+  "Stop & Shop",
+  "MARTIN'S",
+  "ACME Markets",
+];
 const products = Object.fromEntries(retailProducts.map((p) => [p.id, p]));
 const icons = {
   Milk: "🥛",
@@ -30,7 +41,9 @@ const icons = {
   Vegetables: "🥦",
 };
 function photo(p) {
-  return `<span class="icon" aria-hidden="true">${icons[p.cat] || "🛒"}</span>`;
+  if (!p.image)
+    return `<span class="photo-fallback">${icons[p.cat] || "🛒"}</span>`;
+  return `<span class="product-frame"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden class="missing-photo">Photo unavailable</span></span>`;
 }
 function defaultState() {
   const names = ["You", "Sam", "Riley"];
@@ -192,6 +205,8 @@ function tab(s) {
   render();
 }
 function render() {
+  $("page-title").textContent =
+    page === "Compare products" ? "Market shelves" : page;
   $("status").textContent = recovery;
   $("stats").innerHTML = stats();
   $("nav").innerHTML = [
@@ -202,7 +217,7 @@ function render() {
   ]
     .map(
       (v) =>
-        `<button aria-current="${page === v ? "page" : "false"}" class="${page === v ? "on" : ""}" onclick="navTo('${v}')">${v}</button>`,
+        `<button aria-current="${page === v ? "page" : "false"}" class="${page === v ? "on" : ""}" onclick="navTo('${v}')">${v === "Compare products" ? "Browse stores" : v}</button>`,
     )
     .join("");
   $("view").innerHTML =
@@ -261,15 +276,14 @@ function compare(id) {
 function catalog() {
   return `<section class="panel">
 <div class="bar">
-<h2>${swap ? "Compare alternatives" : "Compare products"}</h2>
+<h2>${swap ? "Compare alternatives" : esc(stores[state.store])}</h2>
 <button onclick="locationForm()">${esc(state.location)} · Change location</button>
 </div>
-<div class="stack">
-<select aria-label="Supermarket" onchange="state.store=+this.value;save()">${options(stores, state.store)}</select>
-<input id="query" aria-label="Search groceries" placeholder="Search groceries" value="${esc(filter)}" oninput="filter=this.value;document.getElementById('cards').innerHTML=cards()">
+<div class="shop-tools"><label>Supermarket<select aria-label="Supermarket" onchange="state.store=+this.value;save()">${options(stores, state.store)}</select></label>
+<label>Find an item<input id="query" aria-label="Search groceries" placeholder="Search groceries" value="${esc(filter)}" oninput="filter=this.value;document.getElementById('cards').innerHTML=cards()"></label>
 </div>
 <p>
-<small>Demo selection varies by store. Sorted by price per unit. Compare like units. Prices are estimates; check the retailer for local availability.</small>
+<small>${retailProducts.filter((p) => p.store === state.store).length} demo products · Lowest unit price first · Estimated prices.</small>
 </p>
 <div id="cards" class="catalog">${cards()}</div>
 </section>`;
@@ -285,7 +299,10 @@ function cards() {
       )
       .sort((a, b) => a.p.price / a.p.size - b.p.price / b.p.size)
       .map(
-        ({ p, k }) => `<article>${photo(p)}<b>${esc(p.name)}</b>
+        ({
+          p,
+          k,
+        }) => `<article>${photo(p)}<div class="aisle">${esc(p.cat)}</div><b>${esc(p.name)}</b>
 <p>${p.size} ${esc(p.unit)} · ${cash(amount(p, state.store) / p.size)}/${esc(p.unit)}</p>
 <strong>${cash(amount(p, state.store))}</strong>
 <br>
