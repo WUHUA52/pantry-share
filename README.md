@@ -8,7 +8,7 @@ Plan a grocery trip with roommates, compare package sizes at one store, and see 
 
 ## Try a grocery trip
 
-1. Choose a retailer under **Compare products**. Compare prices per unit, open the retailer’s listing, and add an item to your personal or household list.
+1. Choose a retailer under **Browse stores**. Filter by gluten-free, vegan, vegetarian, dairy-free, or organic. Select a product to see its dietary details, compare budget and specialty picks at the same store, or expand the comparison to other stores. Budget picks show package savings and unit-price savings separately.
 2. On the household list, select the roommates who share each item. Check off purchased items and enter their actual tax-inclusive prices and payer.
 3. Open **Receipts** to see the net balance between each pair of roommates. **Budgets** tracks personal and shared spending across individual pay cycles. You can edit household members and reset the demo here.
 
