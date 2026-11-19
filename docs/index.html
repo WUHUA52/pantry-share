@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><link rel="icon" href="favicon.svg" /><title>
+    Pantry Share | Household groceries</title
+  ><link rel="stylesheet" href="style.css" />
+  <header>
+    <div class="wrap mast">
+      <b class="brand">✳ Pantry Share</b><span>Maple House <i>MH</i></span>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="eyebrow">MAPLE HOUSE / GROCERIES</div>
+    <h1>At the kitchen table.</h1>
+    <p class="intro">
+      Your household’s groceries, from shopping list to split receipt.
+    </p>
+    <p id="status" role="status"></p>
+    <div id="stats"></div>
+    <nav id="nav"></nav>
+    <div id="view"></div>
+    <footer>
+      Demo household · Sample prices · Saved on this browser. Use fictional
+      amounts.
+    </footer>
+  </main>
+  <dialog id="modal">
+    <form id="form">
+      <div class="mast">
+        <h2 id="title"></h2>
+        <button type="button" aria-label="Close" onclick="modal.close()">
+          ×
+        </button>
+      </div>
+      <div id="fields"></div>
+      <p id="error" role="alert"></p>
+      <button class="primary">Save</button>
+    </form>
+  </dialog>
+  <script src="money.js"></script>
+  <script src="retail.js"></script>
+  <script src="storage.js"></script>
+  <script src="app.js"></script>
+</html>
