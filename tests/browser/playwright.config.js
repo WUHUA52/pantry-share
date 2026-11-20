@@ -9,6 +9,7 @@ module.exports = defineConfig({
   use: {
     baseURL: "http://127.0.0.1:4181",
     browserName: "chromium",
+    channel: process.env.CI ? "chrome" : undefined,
     viewport: { width: 390, height: 844 },
     trace: "retain-on-failure",
   },
