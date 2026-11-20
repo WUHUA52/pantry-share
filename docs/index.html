@@ -8,7 +8,7 @@
   ><link rel="stylesheet" href="style.css" />
   <header>
     <div class="wrap mast">
-      <b class="brand">Pantry Share.</b><span class="house">Maple House</span>
+      <b class="brand">Pantry Share.</b><span class="house" data-household>Maple House</span>
     </div>
   </header>
   <main class="wrap">
@@ -21,12 +21,12 @@
       </div>
       <aside class="receipt">
         <div class="receipt-head">
-          <span>Maple House</span>
-          <h2>Grocery budget</h2>
+          <span data-household>Maple House</span>
+          <h2>Household ledger</h2>
         </div>
         <div id="stats"></div>
-        <button class="receipt-link" onclick="navTo('Budgets')">
-          Manage budget
+        <button class="receipt-link" onclick="navTo('Receipts')">
+          View balances
         </button>
       </aside>
     </section>
@@ -39,7 +39,7 @@
     <div class="mast"><h2 id="product-heading"></h2><button aria-label="Close product details" onclick="document.getElementById('product-dialog').close()" autofocus>×</button></div>
     <div id="product-body"></div>
   </dialog>
-  <dialog id="modal">
+  <dialog id="modal" aria-labelledby="title">
     <form id="form">
       <div class="mast">
         <h2 id="title"></h2>
@@ -57,5 +57,12 @@
   <script src="product-labels.js"></script>
   <script src="recommendations.js"></script>
   <script src="storage.js"></script>
+  <script src="store-data.js"></script>
+  <script src="location.js"></script>
+  <script src="market.js"></script>
+  <script src="household.js"></script>
+  <script src="ledger.js"></script>
+  <script src="transfer.js"></script>
+  <script src="pantry.js"></script>
   <script src="app.js"></script>
 </html>

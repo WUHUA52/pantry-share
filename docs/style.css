@@ -537,3 +537,12 @@ footer {
   .option-row { gap: 7px; }
   .option-row .product-frame { width: 40px; height: 50px; }
 }
+
+.product-frame { min-width:0; }
+.product-frame .missing-photo { max-width:100%; overflow-wrap:anywhere; line-height:1.1; padding:2px; }
+.house { max-width:60%; overflow-wrap:anywhere; }
+.receipt-entry .stack { margin-top:6px; }
+.receipt-entry .row { flex-wrap:wrap; }
+.receipt-entry small { display:block; }
+#split label { display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
+#split label input { max-width:6rem; }

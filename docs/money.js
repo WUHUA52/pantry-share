@@ -31,33 +31,54 @@ function periodStart(anchor, cadence, date = today()) {
     .toISOString()
     .slice(0, 10);
 }
-function share(cents, people, name) {
-  const i = people.indexOf(name);
-  return i < 0
-    ? 0
-    : Math.floor(cents / people.length) + (i < cents % people.length ? 1 : 0);
-}
-if (typeof module !== "undefined") module.exports = { share, periodStart };
-// Net each pair in both directions. A payday never erases money owed.
-function netDebts(history) {
-  const pairs = new Map();
-  for (const row of history) {
-    for (const person of row.people) {
-      if (person === row.payer) continue;
-      const [a, b] = [person, row.payer].sort(),
-        key = JSON.stringify([a, b]);
-      pairs.set(
-        key,
-        (pairs.get(key) || 0) +
-          (person === a ? 1 : -1) * share(row.total, row.people, person),
-      );
-    }
+// The largest remainders get the leftover cents. Ties follow list order.
+function allocateCents(total, weights) {
+  if (!Number.isSafeInteger(total) || total < 0 || !weights.length ||
+      weights.some((n) => !Number.isSafeInteger(n) || n < 0)) {
+    throw new Error("Use a nonnegative cent total and integer shares.");
   }
-  return [...pairs]
-    .filter(([, v]) => v !== 0)
-    .map(([key, v]) => {
-      const [a, b] = JSON.parse(key);
-      return { from: v > 0 ? a : b, to: v > 0 ? b : a, amount: Math.abs(v) };
-    });
+  const amounts = weights.some((n) => n > 0) ? weights : weights.map(() => 1);
+  const denominator = amounts.reduce((a, n) => a + BigInt(n), 0n);
+  const portions = amounts.map((weight, index) => {
+    const numerator = BigInt(total) * BigInt(weight);
+    return { index, cents: Number(numerator / denominator), remainder: numerator % denominator };
+  });
+  const leftover = total - portions.reduce((a, p) => a + p.cents, 0);
+  const ranked = [...portions].sort((a, b) =>
+    a.remainder > b.remainder ? -1 : a.remainder < b.remainder ? 1 : a.index - b.index);
+  for (let i = 0; i < leftover; i++) ranked[i].cents++;
+  return portions.map((p) => p.cents);
 }
-if (typeof module !== "undefined") module.exports.netDebts = netDebts;
+
+function itemPortions(total, people, weights) {
+  const valid = Array.isArray(weights) && weights.length === people.length &&
+    weights.every((n) => Number.isSafeInteger(n) && n > 0);
+  return allocateCents(total, valid ? weights : people.map(() => 1));
+}
+
+function share(total, people, name, weights) {
+  const index = people.indexOf(name);
+  return index < 0 ? 0 : itemPortions(total, people, weights)[index];
+}
+
+// A settlement moves money between roommates. It does not change grocery spending.
+function netDebts(history, settlements = []) {
+  const pairs = new Map();
+  function post(from, to, amount) {
+    if (from === to || !amount) return;
+    const [a, b] = [from, to].sort();
+    const key = JSON.stringify([a, b]);
+    pairs.set(key, (pairs.get(key) || 0) + (from === a ? amount : -amount));
+  }
+  for (const row of history) {
+    const portions = itemPortions(row.total, row.people, row.weights);
+    row.people.forEach((person, index) => post(person, row.payer, portions[index]));
+  }
+  for (const payment of settlements) post(payment.to, payment.from, payment.amount);
+  return [...pairs].filter(([, value]) => value !== 0).map(([key, value]) => {
+    const [a, b] = JSON.parse(key);
+    return { from: value > 0 ? a : b, to: value > 0 ? b : a, amount: Math.abs(value) };
+  });
+}
+
+if (typeof module !== "undefined") module.exports = { share, periodStart, allocateCents, netDebts };

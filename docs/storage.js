@@ -92,63 +92,85 @@ function oldSnapshot(index, store) {
     price: [regular, cheap, Math.round(cheap * 1.8)][variant] + store * 7,
   };
 }
-function restore(state, products) {
-  const text = (x) => typeof x === "string" && x.length > 0;
-  const cents = (x) => Number.isSafeInteger(x) && x >= 0;
-  const store = (x) => Number.isInteger(x) && x >= 0 && x < 10;
-  const date = (x) =>
-    text(x) &&
-    /^\d{4}-\d{2}-\d{2}$/.test(x) &&
-    Number.isFinite(Date.parse(x)) &&
-    new Date(x).toISOString().startsWith(x);
-  const validSnapshot = (p) =>
-    p &&
-    text(p.name) &&
-    text(p.unit) &&
-    text(p.cat) &&
-    cents(p.price) &&
-    Number.isFinite(p.size) &&
-    p.size > 0;
-  if (
-    !state ||
-    !store(state.store) ||
-    !text(state.location) ||
-    !cents(state.target) ||
-    !cents(state.pay) ||
-    !Number.isFinite(state.percent) ||
-    state.percent < 0 ||
-    state.percent > 100 ||
-    !Array.isArray(state.members) ||
-    !state.members.length ||
-    !state.members.every(
-      (m) =>
-        m &&
-        text(m.name) &&
-        date(m.anchor) &&
-        cents(m.contribution) &&
-        ["Weekly", "Daily", "Biweekly", "Monthly"].includes(m.cadence),
-    ) ||
-    !Array.isArray(state.items) ||
-    !Array.isArray(state.history)
-  )
-    throw Error("Invalid household");
-  for (const [rows, purchased] of [
-    [state.items, false],
-    [state.history, true],
-  ]) {
-    for (const row of rows) {
-      if (
-        !row ||
-        !store(row.store) ||
-        !cents(row.id) ||
-        !Array.isArray(row.people) ||
-        !row.people.length ||
-        !row.people.every(text) ||
-        !["Shared", "Personal"].includes(row.scope) ||
-        (purchased &&
-          (!date(row.date) || !text(row.payer) || !cents(row.total)))
-      )
-        throw Error("Invalid item");
+const saveKey = "pantry-share-v3";
+const recoveryKey = "pantry-share-before-repair";
+const importBackupKey = "pantry-share-before-import";
+let lastStored = null;
+let writesBlocked = "";
+
+const isRecord = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+const hasText = (v) => typeof v === "string" && Boolean(v.trim());
+const validCents = (v) => Number.isSafeInteger(v) && v >= 0;
+const validDay = (v) => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) &&
+  Number.isFinite(Date.parse(v)) && new Date(v).toISOString().startsWith(v);
+const asArray = (v) => Array.isArray(v) ? v : [];
+const distinctNames = (v) => [...new Set(asArray(v).filter(hasText))];
+
+function simpleSnapshot(p) {
+  if (!isRecord(p) || !hasText(p.name) || !hasText(p.cat) || !hasText(p.unit) ||
+      !validCents(p.price) || !Number.isFinite(p.size) || p.size <= 0) return null;
+  const { name, cat, unit, size, price } = p;
+  return { name, cat, unit, size, price };
+}
+
+function restore(state, catalog, storeCount = typeof stores !== "undefined" ? stores.length : Math.max(1, ...Object.values(catalog).map(p => (p.store || 0) + 1))) {
+  if (!isRecord(state) || !["members", "items", "history"].some(key => Array.isArray(state[key]))) {
+    throw new Error("This file has no recognizable household records.");
+  }
+  const day = typeof today === "function" ? today() : new Date().toISOString().slice(0, 10);
+  const knownStore = (v) => Number.isInteger(v) && v >= 0 && v < storeCount;
+  state.store = knownStore(state.store) ? state.store : 0;
+  if (!hasText(state.householdName)) state.householdName = "Maple House";
+  if (!hasText(state.location)) state.location = "19107";
+  if (!validCents(state.target)) state.target = null;
+  if (!validCents(state.pay)) state.pay = 0;
+  if (!Number.isFinite(state.percent) || state.percent < 0 || state.percent > 100) state.percent = 0;
+  const names = new Set();
+  state.members = asArray(state.members).filter(m => {
+    if (!isRecord(m) || !hasText(m.name) || names.has(m.name.toLowerCase())) return false;
+    names.add(m.name.toLowerCase());
+    if (!validDay(m.anchor)) m.anchor = day;
+    if (!["Weekly", "Daily", "Biweekly", "Monthly"].includes(m.cadence)) m.cadence = "Weekly";
+    if (!validCents(m.contribution)) m.contribution = 0;
+    return true;
+  });
+  if (!state.members.length) state.members.push({ name: "You", anchor: day, contribution: 0, cadence: "Weekly" });
+  const owner = state.members[0].name;
+  const activeNames = state.members.map(m => m.name);
+  const archived = new Set(distinctNames(state.archived));
+  const remember = (name) => { if (!activeNames.includes(name)) archived.add(name); };
+
+  // IDs are numeric in event handlers. Resolve historical duplicates and collisions after imports.
+  const ids = new Set();
+  let nextId = Date.now();
+  function repairId(row) {
+    if (!validCents(row.id) || row.id === 0 || ids.has(row.id)) {
+      while (ids.has(nextId)) nextId++;
+      row.id = nextId++;
+    }
+    ids.add(row.id);
+  }
+  for (const key of ["items", "history"]) {
+    const purchased = key === "history";
+    state[key] = asArray(state[key]).filter(isRecord);
+    for (const row of state[key]) {
+      repairId(row);
+      if (!knownStore(row.store)) row.store = knownStore(catalog[row.product]?.store) ? catalog[row.product].store : state.store;
+      if (!["Shared", "Personal"].includes(row.scope)) row.scope = "Personal";
+      const oldPeople = asArray(row.people);
+      row.people = distinctNames(row.people);
+      if (!row.people.length) row.people = [owner];
+      if (row.weights && (!Array.isArray(row.weights) || oldPeople.length !== row.people.length ||
+          row.weights.length !== row.people.length || !row.weights.every(w => Number.isSafeInteger(w) && w > 0))) delete row.weights;
+      if (!Number.isSafeInteger(row.qty) || row.qty < 1) row.qty = 1;
+      if (purchased) {
+        if (!validCents(row.receiptId) || row.receiptId === 0) delete row.receiptId;
+        if (row.photoKey && (typeof row.photoKey !== "string" || !/^[a-z0-9-]{36}$/i.test(row.photoKey))) delete row.photoKey;
+        if (!validDay(row.date)) row.date = day;
+        if (!hasText(row.payer)) row.payer = "Unknown payer";
+        if (!validCents(row.total)) row.total = 0;
+        [...row.people, row.payer].forEach(remember);
+      }
       if (typeof row.product === "number") {
         const n = row.product;
         if (Number.isInteger(n) && n >= 0 && n < 21) {
@@ -156,28 +178,94 @@ function restore(state, products) {
           row.product = "legacy-" + n;
         } else row.product = originalIds[n - 21] || "unavailable";
       }
-      if (!text(row.product) || !Object.hasOwn(products, row.product)) {
-        if (!validSnapshot(row.snapshot)) {
-          row.snapshot = {
-            name: "Unavailable item",
-            cat: "Unlisted",
-            price: purchased ? row.total : 0,
-            size: 1,
-            unit: "item",
-          };
-        }
-        row.product =
-          typeof row.product === "string" &&
-          !Object.hasOwn(Object.prototype, row.product)
-            ? row.product
-            : "unavailable";
-      } else {
-        const { name, cat, price, size, unit } = products[row.product];
-        row.snapshot = { name, cat, price, size, unit };
-      }
+      if (row.product === "sku-9e5205509768") row.product = "sku-d150f62635f3";
+      if (!hasText(row.product) || Object.hasOwn(Object.prototype, row.product)) row.product = "unavailable";
+      row.snapshot = (purchased && simpleSnapshot(row.snapshot)) || simpleSnapshot(catalog[row.product]) ||
+        simpleSnapshot(row.snapshot) || { name: "Unavailable item", cat: "Unlisted", unit: "item", size: 1, price: purchased ? row.total : 0 };
     }
   }
-  state.version = 2;
+  state.settlements = asArray(state.settlements).filter(s => isRecord(s) && hasText(s.from) &&
+    hasText(s.to) && s.from !== s.to && validCents(s.amount) && s.amount > 0);
+  for (const s of state.settlements) {
+    repairId(s);
+    if (!validDay(s.date)) s.date = day;
+    if (typeof s.note !== "string") s.note = "";
+    remember(s.from);
+    remember(s.to);
+  }
+  state.archived = [...archived].filter(name => !activeNames.includes(name));
+  state.pantry = asArray(state.pantry).filter(p => isRecord(p) && hasText(p.name));
+  for (const p of state.pantry) {
+    repairId(p);
+    if (!hasText(p.owner)) p.owner = owner;
+    if (!hasText(p.place)) p.place = "Pantry";
+    if (!Number.isSafeInteger(p.qty) || p.qty < 1) p.qty = 1;
+    if (!validDay(p.expires)) p.expires = "";
+  }
+  if (!activeNames.includes(state.shopper)) state.shopper = owner;
+  state.version = 3;
   return state;
 }
-if (typeof module !== "undefined") module.exports = { restore, originalIds };
+
+function loadHousehold(storage, fresh = defaultState, catalog = products, count = stores.length) {
+  lastStored = null;
+  writesBlocked = "";
+  let raw;
+  try {
+    storage ??= localStorage;
+    lastStored = storage.getItem(saveKey);
+    raw = lastStored ?? storage.getItem("pantry-share-v2") ?? storage.getItem("pantry-share-v1");
+    if (raw === null) return { state: restore(fresh(), catalog, count), recovery: "" };
+    const repaired = restore(JSON.parse(raw), catalog, count);
+    const serialized = JSON.stringify(repaired);
+    if (serialized !== lastStored) {
+      try {
+        if (storage.getItem(saveKey) !== lastStored) throw new Error("Concurrent edit");
+        storage.setItem(recoveryKey, raw);
+        storage.setItem(saveKey, serialized);
+        lastStored = serialized;
+      } catch {
+        writesBlocked = "The original save is protected. Free browser storage or reload before saving changes.";
+      }
+    }
+    return { state: repaired, recovery: writesBlocked || (serialized !== raw ?
+      "Saved data was updated. The original is available under backup downloads." : "") };
+  } catch {
+    try { if (typeof raw === "string") storage.setItem(recoveryKey, raw); } catch { /* Original is still in its source key. */ }
+    writesBlocked = "The saved household could not be read. Its original is protected. This temporary view cannot overwrite it.";
+    return { state: restore(fresh(), catalog, count), recovery: writesBlocked };
+  }
+}
+
+// Called only after an explicit import or reset confirmation. Never overwrite an unreadable
+// source until another browser-storage entry contains the exact original text.
+function replaceProtectedHousehold(household, storage = localStorage) {
+  if (!writesBlocked) return persistHousehold(household, storage);
+  const current = storage.getItem(saveKey);
+  if (current !== lastStored) throw new Error("Another tab changed the household. Reload before continuing.");
+  const raw = current ?? storage.getItem("pantry-share-v2") ?? storage.getItem("pantry-share-v1");
+  if (raw !== null) {
+    storage.setItem(recoveryKey, raw);
+    if (storage.getItem(recoveryKey) !== raw) throw new Error("Could not protect the original save.");
+  }
+  const serialized = JSON.stringify(household);
+  storage.setItem(saveKey, serialized);
+  writesBlocked = "";
+  lastStored = serialized;
+}
+
+function persistHousehold(household, storage = localStorage) {
+  if (writesBlocked) throw new Error(writesBlocked);
+  try {
+    if (storage.getItem(saveKey) !== lastStored) {
+      throw new Error("Another tab changed this household. Reload to use the latest copy before saving.");
+    }
+    const serialized = JSON.stringify(household);
+    storage.setItem(saveKey, serialized);
+    lastStored = serialized;
+  } catch (error) {
+    if (error.message.startsWith("Another tab")) throw error;
+    throw new Error("Changes are only in this tab. Browser storage is full or unavailable.");
+  }
+}
+if (typeof module !== "undefined") module.exports = { restore, originalIds, loadHousehold, persistHousehold, saveKey, recoveryKey };
