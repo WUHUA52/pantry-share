@@ -2,6 +2,10 @@
   "name": "pantry-share",
   "private": true,
   "scripts": {
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test --config tests/browser/playwright.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
   }
 }
